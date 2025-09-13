@@ -872,8 +872,8 @@ MonoBehaviour:
   chatPanel: {fileID: 105820426}
   chatInput: {fileID: 670615324}
   modelDropdown: {fileID: 1970803233}
-  systemPrompt: 'You can perform actions by using curly brackets. For example: {pull_lever}
-    or {push_button}'
+  systemPrompt: 'You can perform physical like actions by using curly brackets. For
+    example: {pull_lever}'
 --- !u!4 &497784075
 Transform:
   m_ObjectHideFlags: 0

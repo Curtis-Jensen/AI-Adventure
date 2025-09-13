@@ -12,7 +12,7 @@ namespace Neocortex.Samples
         [SerializeField, TextArea] private string systemPrompt;
 
         private OllamaRequest request;
-        private readonly Regex actionPattern = new Regex(@"\{(.*?)\}", RegexOptions.Compiled);
+        private readonly Regex actionPattern = new(@"\{(.*?)\}", RegexOptions.Compiled);
 
         void Start()
         {
@@ -34,6 +34,13 @@ namespace Neocortex.Samples
         {
             string message = response.message;
             
+            GetActions(message);
+
+            chatPanel.AddMessage(message, false);
+        }
+
+        void GetActions(string message)
+        {
             // Check for actions in curly brackets
             var matches = actionPattern.Matches(message);
             foreach (Match match in matches)
@@ -41,8 +48,6 @@ namespace Neocortex.Samples
                 string action = match.Groups[1].Value.Trim().ToLower();
                 ExecuteAction(action);
             }
-
-            chatPanel.AddMessage(message, false);
         }
 
         private void ExecuteAction(string action)
@@ -54,7 +59,7 @@ namespace Neocortex.Samples
                     PullLever();
                     break;
                 default:
-                    Debug.LogWarning($"Unknown action: {action}");
+                    Debug.LogError($"Unknown action: {action}");
                     break;
             }
         }
