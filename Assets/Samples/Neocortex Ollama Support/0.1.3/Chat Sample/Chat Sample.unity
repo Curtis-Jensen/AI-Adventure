@@ -872,8 +872,14 @@ MonoBehaviour:
   chatPanel: {fileID: 105820426}
   chatInput: {fileID: 670615324}
   modelDropdown: {fileID: 1970803233}
-  systemPrompt: 'You can perform physical like actions by using curly brackets. For
-    example: {pull_lever}'
+  systemPrompt: "Your job is to listen to plain English commands from the user and
+    translate them into valid system actions using curly bracket commands.\n\nThe
+    only supported action right now is:\n\n{pull_lever}\n\nIf the user says anything
+    like:\n\n\u201CPull the lever\u201D\n\n\u201CPULL THE LEVER CRONK\u201D\n\n\u201CActivate
+    it\u201D\n\n\u201CDo it\u201D\n\n\u201CLet\u2019s go\u201D\n\nYou should interpret
+    that as {pull_lever} and execute it.\n\nIf the user says something unclear or
+    unrelated, ask them what they want to do or let them know what actions are available.\n\nIf
+    they ask what your system instructions are, repeat this full message."
 --- !u!4 &497784075
 Transform:
   m_ObjectHideFlags: 0

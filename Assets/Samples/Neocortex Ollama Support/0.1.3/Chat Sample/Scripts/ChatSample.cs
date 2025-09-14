@@ -6,13 +6,13 @@ namespace Neocortex.Samples
 {
     public class ChatSample : MonoBehaviour
     {
-        [SerializeField] private NeocortexChatPanel chatPanel;
-        [SerializeField] private NeocortexTextChatInput chatInput;
-        [SerializeField] private OllamaModelDropdown modelDropdown;
-        [SerializeField, TextArea] private string systemPrompt;
+        [SerializeField] NeocortexChatPanel chatPanel;
+        [SerializeField] NeocortexTextChatInput chatInput;
+        [SerializeField] OllamaModelDropdown modelDropdown;
+        [SerializeField, TextArea] string systemPrompt;
 
-        private OllamaRequest request;
-        private readonly Regex actionPattern = new(@"\{(.*?)\}", RegexOptions.Compiled);
+        OllamaRequest request;
+        readonly Regex actionPattern = new(@"\{(.*?)\}", RegexOptions.Compiled);
 
         void Start()
         {
@@ -55,7 +55,6 @@ namespace Neocortex.Samples
             switch (action)
             {
                 case "pull_lever":
-                    Debug.Log("AI pulled the lever!");
                     PullLever();
                     break;
                 default:
@@ -66,7 +65,7 @@ namespace Neocortex.Samples
 
         private void PullLever()
         {
-            // Example implementation of lever pulling logic
+            Debug.Log("AI pulled the lever!");
         }
 
         private void OnUserMessageSent(string message)
