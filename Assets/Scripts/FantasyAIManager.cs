@@ -52,20 +52,26 @@ namespace Neocortex.Samples
 
         private void ExecuteAction(string action)
         {
+            Debug.LogWarning($"Executing action: {action}");
+
+            if (action.Contains("set_background"))
+            {
+                SetBackground(action);
+            }
             switch (action)
             {
-                case "pull_lever":
-                    PullLever();
-                    break;
                 default:
                     Debug.LogError($"Unknown action: {action}");
                     break;
             }
         }
 
-        private void PullLever()
+        void SetBackground(string action)
         {
-            Debug.Log("AI pulled the lever!");
+            string[] parts = action.Split(':');
+            string backgroundName = parts[1].Trim();
+
+            //Need to actually change the image here
         }
 
         private void OnUserMessageSent(string message)
