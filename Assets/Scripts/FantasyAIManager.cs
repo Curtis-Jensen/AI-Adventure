@@ -4,12 +4,12 @@ using System.Text.RegularExpressions;
 
 namespace Neocortex.Samples
 {
-    public class AIManager : MonoBehaviour
+    public class FantasyAIManager : MonoBehaviour
     {
         [SerializeField] NeocortexChatPanel chatPanel;
         [SerializeField] NeocortexTextChatInput chatInput;
         [SerializeField] OllamaModelDropdown modelDropdown;
-        [SerializeField, TextArea] string systemPrompt;
+        [SerializeField, TextArea(5, 999)] string systemPrompt;
 
         OllamaRequest request;
         readonly Regex actionPattern = new(@"\{(.*?)\}", RegexOptions.Compiled);
