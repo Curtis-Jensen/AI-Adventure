@@ -876,16 +876,38 @@ MonoBehaviour:
     control the setting, mood, and pace of the world.\nYour job is to narrate the
     world, describe events, and guide the player through a story.\n\nYou also have
     the ability to change the background based on the scene. To do that, you use
-    curly-bracket system commands like this:\n\n{set_background:<scene_name>}\n\nList
-    of all currently supported backgrounds:\ngoblin_cave\nroyal_throne_room\nmisty_forest\nundead_catacombs\nstormy_clifftop\ninn_tavern_night\ndragon_lair\n\nWhen
-    the scene changes \u2014 for example, when a player enters a new area, or the
-    narrative shifts \u2014 you must:\n\nUse the correct {set_background:...} command\n\nImmediately
-    follow it with rich flavor text describing the new environment\n\nContinue the
-    roleplay naturally\n\nDo not wait for the player to ask you to change the background
-    \u2014 you decide when the scene changes, just like a real Dungeon Master would.\n\nIf
-    the player talks, responds, or acts, react as a storyteller. If they ask for
-    help or seem lost, offer a hint or prompt.\n\nIf they thank you, respond warmly.\n\nIf
-    they ask what your instructions are, repeat this full message."
+    curly-bracket system commands like this:\n\n{set_background:<scene_name>}\n\nONLY
+    USE this list of all currently supported backgrounds and spell them EXACTLY the
+    same:\nvolcano\nfrozen peak\n\nWhen the scene changes \u2014 for example, when
+    a player enters a new area, or the narrative shifts \u2014 you must:\n\nUse the
+    correct {set_background:...} command\n\nImmediately follow it with rich flavor
+    text describing the new environment\n\nContinue the roleplay naturally\n\nDo
+    not wait for the player to ask you to change the background \u2014 you decide
+    when the scene changes, just like a real Dungeon Master would.\n\nIf the player
+    talks, responds, or acts, react as a storyteller. If they ask for help or seem
+    lost, offer a hint or prompt.\n\nIf they thank you, respond warmly.\n\nIf they
+    ask what your instructions are, repeat this full message."
+  backgroundImage: {fileID: 655745574}
+  backgroundSprites:
+  - {fileID: 21300000, guid: 8033223bd1f0d41068a6c0dff5019a1a, type: 3}
+  - {fileID: 21300000, guid: 92b6346ea17264e2e90fcb9cd0fa14c4, type: 3}
+  - {fileID: 21300000, guid: 85e8d285f172042449ec39ea7071c335, type: 3}
+  - {fileID: 21300000, guid: bb95522a73e324e41889ab98955e8e04, type: 3}
+  - {fileID: 21300000, guid: 4b0ef0ef0c1eb4be2826ed1c3701c317, type: 3}
+  - {fileID: 21300000, guid: 1217e9f37a23e4e6b9de20f3bbcad49b, type: 3}
+  - {fileID: 21300000, guid: 644e120548f154a38ba1cec8bf9107e5, type: 3}
+  - {fileID: 21300000, guid: 54a69dc93d8a3499b9cad0afd98c208a, type: 3}
+  - {fileID: 21300000, guid: ea64fbc8b4a504070a5af2c5acbb1d4c, type: 3}
+  - {fileID: 21300000, guid: 278960488d72b4ff4a8977a06d83414e, type: 3}
+  - {fileID: 21300000, guid: 4c6e722994bf049b8822e4d1102041c6, type: 3}
+  - {fileID: 21300000, guid: eda7228d280a64afb91db51341cc39e0, type: 3}
+  - {fileID: 21300000, guid: f65c16898b2884d3a8b2eeac5e083ec3, type: 3}
+  - {fileID: 21300000, guid: 0e9ba370e05454b2780f2633e3d74ce6, type: 3}
+  - {fileID: 21300000, guid: 37c68c463835e4237995b80c33b19718, type: 3}
+  - {fileID: 21300000, guid: 235df6e0a941b454dbbce65acd3bae0f, type: 3}
+  - {fileID: 21300000, guid: aaf6a044f67b4472dbf885aa9cffa090, type: 3}
+  - {fileID: 21300000, guid: 2099eb6fa13584fc0a2e54beffa68587, type: 3}
+  - {fileID: 21300000, guid: 19837ce18b91042849c71e3e10289ea5, type: 3}
 --- !u!4 &497784075
 Transform:
   m_ObjectHideFlags: 0
@@ -901,6 +923,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &655745572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 655745573}
+  - component: {fileID: 655745575}
+  - component: {fileID: 655745574}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &655745573
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655745572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1540075516}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.25, y: -0.25}
+  m_SizeDelta: {x: 0.5, y: -0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &655745574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655745572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &655745575
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655745572}
+  m_CullTransparentMesh: 1
 --- !u!1 &668971345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,6 +2300,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 655745573}
   - {fileID: 670615323}
   - {fileID: 1970803232}
   - {fileID: 105820425}

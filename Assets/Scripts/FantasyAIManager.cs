@@ -10,6 +10,8 @@ namespace Neocortex.Samples
         [SerializeField] NeocortexTextChatInput chatInput;
         [SerializeField] OllamaModelDropdown modelDropdown;
         [SerializeField, TextArea(5, 999)] string systemPrompt;
+        [SerializeField] UnityEngine.UI.Image backgroundImage;
+        [SerializeField] Sprite[] backgroundSprites;
 
         OllamaRequest request;
         readonly Regex actionPattern = new(@"\{(.*?)\}", RegexOptions.Compiled);
@@ -57,21 +59,31 @@ namespace Neocortex.Samples
             if (action.Contains("set_background"))
             {
                 SetBackground(action);
+
+                return;
             }
-            switch (action)
-            {
-                default:
-                    Debug.LogError($"Unknown action: {action}");
-                    break;
-            }
+
+            Debug.LogError($"Unknown action: {action}");
         }
 
         void SetBackground(string action)
         {
             string[] parts = action.Split(':');
-            string backgroundName = parts[1].Trim();
+            string backgroundName = parts[1].Trim().ToLower();
 
-            //Need to actually change the image here
+            // Try to find a sprite whose name matches the requested background
+            Sprite matchingSprite = System.Array.Find(backgroundSprites, 
+                sprite => sprite != null && sprite.name.Contains(backgroundName));
+
+            if (matchingSprite != null)
+            {
+                backgroundImage.sprite = matchingSprite;
+                Debug.Log($"Changed background to: {matchingSprite.name}");
+            }
+            else
+            {
+                Debug.LogError($"No background sprite found matching name: {backgroundName}");
+            }
         }
 
         private void OnUserMessageSent(string message)
