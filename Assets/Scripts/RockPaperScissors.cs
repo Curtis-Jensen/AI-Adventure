@@ -20,35 +20,25 @@ public class RockPaperScissors : MonoBehaviour
     
     void Start()
     {
-        // Add click listeners to buttons
-        rockButton.onClick.AddListener(() => PlayGame(0));     // 0 = Rock
-        paperButton.onClick.AddListener(() => PlayGame(1));    // 1 = Paper
-        scissorsButton.onClick.AddListener(() => PlayGame(2)); // 2 = Scissors
-        
-        // Initialize health
         ResetGame();
     }
     
     void ResetGame()
     {
+        rockButton.onClick.AddListener(() => PlayGame(0));     // 0 = Rock
+        paperButton.onClick.AddListener(() => PlayGame(1));    // 1 = Paper
+        scissorsButton.onClick.AddListener(() => PlayGame(2)); // 2 = Scissors
+
         playerHealth = startingHealth;
         computerHealth = startingHealth;
         UpdateHealthUI();
-        EnableGameButtons(true);
         resultText.text = "Choose your weapon!";
     }
     
     void UpdateHealthUI()
     {
-        playerHealthSlider.value = playerHealth / (float)startingHealth;
-        computerHealthSlider.value = computerHealth / (float)startingHealth;
-    }
-    
-    void EnableGameButtons(bool enabled)
-    {
-        rockButton.interactable = enabled;
-        paperButton.interactable = enabled;
-        scissorsButton.interactable = enabled;
+        playerHealthSlider.value = playerHealth;
+        computerHealthSlider.value = computerHealth;
     }
 
     void PlayGame(int playerChoice)
@@ -80,7 +70,6 @@ public class RockPaperScissors : MonoBehaviour
                             $"Computer chose {choices[computerChoice]}\n" +
                             $"{gameOverResult} {gameOverEmoticon}\n\n" +
                             "Press any button to play again!";
-            EnableGameButtons(true);
             
             // Add listeners for reset
             rockButton.onClick.RemoveAllListeners();
