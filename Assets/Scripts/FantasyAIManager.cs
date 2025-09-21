@@ -10,6 +10,8 @@ namespace Neocortex.Samples
         [SerializeField] NeocortexTextChatInput chatInput;
         [SerializeField] OllamaModelDropdown modelDropdown;
         [SerializeField, TextArea(5, 999)] string systemPrompt;
+        [SerializeField] UnityEngine.UI.Image backgroundImage;
+        [SerializeField] Sprite[] backgroundSprites;
 
         OllamaRequest request;
         readonly Regex actionPattern = new(@"\{(.*?)\}", RegexOptions.Compiled);
@@ -22,7 +24,19 @@ namespace Neocortex.Samples
             chatInput.OnSendButtonClicked.AddListener(OnUserMessageSent);
             modelDropdown.onValueChanged.AddListener(OnDropdownValueChanged);
 
-            request.AddSystemMessage(systemPrompt);
+            // Collect all background names
+            string backgroundList = "";
+            foreach (Sprite sprite in backgroundSprites)
+            {
+                if (sprite != null)
+                {
+                    backgroundList += $"- {sprite.name}\n";
+                }
+            }
+
+            // Append background list to system prompt
+            string fullPrompt = systemPrompt + "\n\n" + backgroundList;
+            request.AddSystemMessage(fullPrompt);
         }
 
         private void OnDropdownValueChanged(int index)
@@ -52,20 +66,36 @@ namespace Neocortex.Samples
 
         private void ExecuteAction(string action)
         {
-            switch (action)
+            Debug.LogWarning($"Executing action: {action}");
+
+            if (action.Contains("set_background"))
             {
-                case "pull_lever":
-                    PullLever();
-                    break;
-                default:
-                    Debug.LogError($"Unknown action: {action}");
-                    break;
+                SetBackground(action);
+
+                return;
             }
+
+            Debug.LogError($"Unknown action: {action}");
         }
 
-        private void PullLever()
+        void SetBackground(string action)
         {
-            Debug.Log("AI pulled the lever!");
+            string[] parts = action.Split(':');
+            string backgroundName = parts[1].Trim().ToLower();
+
+            // Try to find a sprite whose name matches the requested background
+            Sprite matchingSprite = System.Array.Find(backgroundSprites, 
+                sprite => sprite != null && sprite.name.Contains(backgroundName));
+
+            if (matchingSprite != null)
+            {
+                backgroundImage.sprite = matchingSprite;
+                Debug.Log($"Changed background to: {matchingSprite.name}");
+            }
+            else
+            {
+                Debug.LogError($"No background sprite found matching name: {backgroundName}");
+            }
         }
 
         private void OnUserMessageSent(string message)
