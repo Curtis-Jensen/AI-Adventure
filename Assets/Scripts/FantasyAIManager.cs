@@ -24,7 +24,19 @@ namespace Neocortex.Samples
             chatInput.OnSendButtonClicked.AddListener(OnUserMessageSent);
             modelDropdown.onValueChanged.AddListener(OnDropdownValueChanged);
 
-            request.AddSystemMessage(systemPrompt);
+            // Collect all background names
+            string backgroundList = "";
+            foreach (Sprite sprite in backgroundSprites)
+            {
+                if (sprite != null)
+                {
+                    backgroundList += $"- {sprite.name}\n";
+                }
+            }
+
+            // Append background list to system prompt
+            string fullPrompt = systemPrompt + "\n\n" + backgroundList;
+            request.AddSystemMessage(fullPrompt);
         }
 
         private void OnDropdownValueChanged(int index)
