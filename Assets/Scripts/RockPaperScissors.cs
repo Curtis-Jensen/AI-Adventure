@@ -6,20 +6,23 @@ using TMPro;
 
 public class RockPaperScissors : MonoBehaviour
 {
-    public TMP_Text resultText;
-    public Button rockButton;
-    public Button paperButton;
-    public Button scissorsButton;
-    public Slider playerHealthSlider;
-    public Slider computerHealthSlider;
-    
-    [SerializeField] private int startingHealth = 2;  // Set this in inspector (2 for best of 3)
+    [SerializeField] int startingHealth = 2;  // Set this in inspector (2 for best of 3)
+    [SerializeField] TMP_Text resultText;
+    [SerializeField] Button rockButton;
+    [SerializeField] Button paperButton;
+    [SerializeField] Button scissorsButton;
+    [SerializeField] Slider playerHealthSlider;
+    [SerializeField] Slider computerHealthSlider;
     private int playerHealth;
     private int computerHealth;
     private string[] choices = { "Rock (o)", "Paper [-]", "Scissors >8" };
     
     void Start()
     {
+        playerHealthSlider.maxValue = startingHealth;
+        computerHealthSlider.maxValue = startingHealth;
+        playerHealthSlider.value = startingHealth;
+        computerHealthSlider.value = startingHealth;
         ResetGame();
     }
     
@@ -61,6 +64,8 @@ public class RockPaperScissors : MonoBehaviour
         
         UpdateHealthUI();
         
+        Debug.Log($"playerHealth = {playerHealth} computerHealth = {computerHealth}");
+
         // Check for game over
         if (playerHealth <= 0 || computerHealth <= 0)
         {
@@ -70,12 +75,12 @@ public class RockPaperScissors : MonoBehaviour
                             $"Computer chose {choices[computerChoice]}\n" +
                             $"{gameOverResult} {gameOverEmoticon}\n\n" +
                             "Press any button to play again!";
-            
+
             // Add listeners for reset
             rockButton.onClick.RemoveAllListeners();
             paperButton.onClick.RemoveAllListeners();
             scissorsButton.onClick.RemoveAllListeners();
-            
+
             rockButton.onClick.AddListener(ResetGame);
             paperButton.onClick.AddListener(ResetGame);
             scissorsButton.onClick.AddListener(ResetGame);
